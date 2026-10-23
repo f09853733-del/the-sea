@@ -1,86 +1,34 @@
 
-const languageButton = document.getElementById("language");
+const languageBtn = document.getElementById("languageBtn");
+let currentLanguage = "fa";
 
-let currentLanguage = "en";
+languageBtn.addEventListener("click", () => {
+  currentLanguage = currentLanguage === "fa" ? "en" : "fa";
 
-function setLanguage(language) {
-  currentLanguage = language;
-
-  document.documentElement.lang = language;
+  document.documentElement.lang = currentLanguage;
   document.documentElement.dir =
-    language === "fa" ? "rtl" : "ltr";
+    currentLanguage === "fa" ? "rtl" : "ltr";
 
-  document.body.dir =
-    language === "fa" ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-en][data-fa]").forEach((element) => {
-    element.innerHTML =
-      language === "fa"
-        ? element.dataset.fa
-        : element.dataset.en;
+  document.querySelectorAll("[data-fa][data-en]").forEach(element => {
+    element.textContent = element.dataset[currentLanguage];
   });
 
-  languageButton.textContent =
-    language === "en" ? "فارسی" : "English";
-
-  document.title =
-    language === "fa"
-      ? "دریا — کشف آبی پنهان"
-      : "The Sea — Discover the Blue";
-}
-
-languageButton.addEventListener("click", () => {
-  setLanguage(currentLanguage === "en" ? "fa" : "en");
+  languageBtn.textContent =
+    currentLanguage === "fa" ? "English" : "فارسی";
 });
 
-// Reveal sections as they enter the viewport
-const revealElements = document.querySelectorAll(".reveal");
+// اگر عکسی بارگذاری نشد، تصویر جایگزین را امتحان کن.
+const fallbackImages = [
+  "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
+  "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80"
+];
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
+document.querySelectorAll(".ocean-card img").forEach(img => {
+  let attempts = 0;
 
-  revealElements.forEach((element) => observer.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add("visible"));
-}
-
-// Floating ocean bubbles
-const bubbleContainer = document.querySelector(".bubbles");
-
-function createBubble() {
-  if (document.hidden || !bubbleContainer) return;
-
-  const bubble = document.createElement("span");
-  bubble.className = "bubble";
-
-  const size = Math.random() * 12 + 4;
-
-  bubble.style.width = `${size}px`;
-  bubble.style.height = `${size}px`;
-  bubble.style.left = `${Math.random() * 100}%`;
-  bubble.style.animationDuration = `${Math.random() * 7 + 8}s`;
-
-  bubbleContainer.appendChild(bubble);
-
-  bubble.addEventListener("animationend", () => {
-    bubble.remove();
+  img.addEventListener("error", () => {
+    if (attempts < fallbackImages.length) {
+      img.src = fallbackImages[attempts++];
+    }
   });
-
-  setTimeout(() => bubble.remove(), 16000);
-}
-
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  setInterval(createBubble, 650);
-}
-
-setLanguage("en");
+});
