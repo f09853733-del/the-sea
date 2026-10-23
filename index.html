@@ -1,262 +1,195 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#031b32">
-  <meta name="description" content="Explore the mysterious beauty of our oceans, marine life and underwater worlds.">
-  <title>Ocean Dreams | Discover the Deep</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#03131f">
+  <meta name="description" content="سفری شگفت‌انگیز به اعماق اقیانوس؛ Explore the mysterious deep ocean.">
+  <title>Ocean Dream | رؤیای اقیانوس</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
 
-  <div class="loader" id="loader">
-    <div class="loader-wave">〰</div>
-    <p>DIVING INTO THE DEEP...</p>
-  </div>
-
-  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <div class="ocean-glow"></div>
+  <div class="bubbles" aria-hidden="true"></div>
 
   <header class="navbar">
-    <a href="#home" class="logo">
-      <span class="logo-icon">〰</span>
-      OCEAN<span class="logo-light">DREAMS</span>
-    </a>
+    <a href="#home" class="logo">OCEAN<span>°</span></a>
 
-    <button class="menu-toggle" id="menuToggle"
-      aria-label="Toggle navigation" aria-expanded="false">☰</button>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#creatures">Marine Life</a>
-      <a href="#facts">Ocean Facts</a>
-      <a href="#protect">Protect</a>
+    <nav>
+      <a href="#home" data-fa="خانه" data-en="Home">خانه</a>
+      <a href="#discover" data-fa="اکتشاف" data-en="Discover">اکتشاف</a>
+      <a href="#creatures" data-fa="موجودات دریایی" data-en="Creatures">موجودات دریایی</a>
     </nav>
 
-    <a class="nav-cta" href="#explore">Dive In ↗</a>
+    <button class="lang-btn" id="langBtn" type="button">EN ↗</button>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-image"></div>
-      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow"
+          data-fa="✦ دنیایی فراتر از تصور"
+          data-en="✦ A WORLD BEYOND IMAGINATION">
+          ✦ دنیایی فراتر از تصور
+        </span>
 
-      <div class="hero-content reveal">
-        <span class="eyebrow"><span class="pulse"></span> A WORLD BENEATH THE WAVES</span>
-        <h1>The ocean is<br>another <span>universe.</span></h1>
-        <p>
-          Dive into a world of wonder, where sunlight dances
-          through turquoise waters and every creature tells a story.
+        <h1>
+          <span data-fa="به اعماق" data-en="INTO THE">به اعماق</span>
+          <strong data-fa="ناشناخته‌ها" data-en="UNKNOWN">ناشناخته‌ها</strong>
+          <span data-fa="سفر کن." data-en="BLUE.">سفر کن.</span>
+        </h1>
+
+        <p class="hero-text"
+          data-fa="جایی که نور می‌رقصد، موجودات اسرارآمیز زندگی می‌کنند و هر موج داستانی تازه دارد."
+          data-en="Where light dances, mysterious creatures come alive, and every wave tells a new story.">
+          جایی که نور می‌رقصد، موجودات اسرارآمیز زندگی می‌کنند و هر موج داستانی تازه دارد.
         </p>
-        <div class="hero-actions">
-          <a href="#explore" class="button button-primary">Explore the Deep <span>↗</span></a>
-          <a href="#creatures" class="button button-ghost">Meet the Creatures</a>
+
+        <a href="#discover" class="explore-btn">
+          <span data-fa="شروع ماجراجویی" data-en="START EXPLORING">شروع ماجراجویی</span>
+          <span>↙</span>
+        </a>
+
+        <div class="hero-stats">
+          <div><b>71%</b><span data-fa="سطح زمین پوشیده از آب" data-en="OF EARTH COVERED BY WATER">سطح زمین پوشیده از آب</span></div>
+          <div><b>∞</b><span data-fa="رازهای کشف‌نشده" data-en="SECRETS TO DISCOVER">رازهای کشف‌نشده</span></div>
         </div>
       </div>
 
-      <div class="hero-note">
-        <span class="note-line"></span>
-        <span>71% OF OUR PLANET IS OCEAN</span>
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=1200&q=85"
+          alt="دنیای شگفت‌انگیز زیر آب"
+          fetchpriority="high"
+        >
+        <div class="image-label">
+          <span class="live-dot"></span>
+          <span data-fa="به دنیای آبی خوش آمدی" data-en="WELCOME TO THE BLUE">به دنیای آبی خوش آمدی</span>
+        </div>
+        <span class="floating-star star-one">✧</span>
+        <span class="floating-star star-two">✦</span>
       </div>
 
-      <a href="#explore" class="scroll-indicator">
-        <span class="scroll-mouse"></span>
-        SCROLL TO DISCOVER
-      </a>
-
-      <div class="hero-counter">
-        <span>01</span><span class="counter-line"></span><span>05</span>
+      <div class="scroll-note">
+        <span>↓</span>
+        <span data-fa="برای کشف بیشتر اسکرول کن" data-en="SCROLL TO DISCOVER">برای کشف بیشتر اسکرول کن</span>
       </div>
     </section>
 
-    <section class="stats" id="facts">
-      <div class="stat reveal">
-        <span class="stat-icon">≈</span>
-        <h2>71<span>%</span></h2>
-        <p>of Earth's surface is covered by ocean</p>
-      </div>
-      <div class="stat reveal">
-        <span class="stat-icon">✳</span>
-        <h2>230K<span>+</span></h2>
-        <p>marine species described by science</p>
-      </div>
-      <div class="stat reveal">
-        <span class="stat-icon">◉</span>
-        <h2>50<span>%</span></h2>
-        <p>of our oxygen production is ocean-related</p>
-      </div>
-      <div class="stat reveal">
-        <span class="stat-icon">∞</span>
-        <h2>1<span> Ocean</span></h2>
-        <p>one connected world worth protecting</p>
-      </div>
-    </section>
-
-    <section class="explore section" id="explore">
-      <div class="section-heading reveal">
-        <span class="eyebrow">BEYOND THE BLUE</span>
-        <h2>A universe waiting<br>to be <span>discovered.</span></h2>
-        <p>
-          From sunlit coral gardens to the mysterious midnight zone,
-          the ocean is full of wonders we are only beginning to understand.
+    <section class="intro section-pad" id="discover">
+      <div class="section-heading">
+        <span class="eyebrow"
+          data-fa="01 / فراتر از سطح"
+          data-en="01 / BEYOND THE SURFACE">01 / فراتر از سطح</span>
+        <h2 data-fa="اقیانوس، سیاره‌ای در دل سیاره ما" data-en="A WORLD WITHIN OUR WORLD">
+          اقیانوس، سیاره‌ای در دل سیاره ما
+        </h2>
+        <p data-fa="از آب‌های روشن و آرام تا تاریکی‌های عمیق؛ هر لایه از اقیانوس دنیایی متفاوت است."
+           data-en="From sunlit waters to the deepest darkness, every ocean layer holds a different world.">
+          از آب‌های روشن و آرام تا تاریکی‌های عمیق؛ هر لایه از اقیانوس دنیایی متفاوت است.
         </p>
       </div>
 
-      <div class="explore-grid">
-        <article class="explore-card explore-large reveal">
-          <img
-            src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=1200&q=85"
-            alt="Colorful coral reef beneath the ocean">
-          <div class="card-shade"></div>
-          <div class="explore-card-content">
-            <span>01 / THE SHALLOW WORLD</span>
-            <h3>Coral Kingdoms</h3>
-            <p>Vibrant reefs, hidden gardens and a thousand shades of blue.</p>
-            <a href="#creatures" aria-label="Explore coral kingdoms">Discover more ↗</a>
-          </div>
-        </article>
-
-        <article class="explore-card reveal">
-          <img
-            src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=900&q=85"
-            alt="Deep blue ocean water">
-          <div class="card-shade"></div>
-          <div class="explore-card-content">
-            <span>02 / THE OPEN SEA</span>
-            <h3>Endless Blue</h3>
-            <p>Vast waters stretching beyond the horizon.</p>
-            <a href="#creatures" aria-label="Explore the open sea">Discover more ↗</a>
-          </div>
-        </article>
-
-        <article class="explore-card reveal">
-          <img
-            src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=900&q=85"
-            alt="Sunlight filtering through underwater water">
-          <div class="card-shade"></div>
-          <div class="explore-card-content">
-            <span>03 / THE UNKNOWN</span>
-            <h3>Into the Deep</h3>
-            <p>Enter the mysterious world beyond the sunlight.</p>
-            <a href="#creatures" aria-label="Explore the deep ocean">Discover more ↗</a>
-          </div>
-        </article>
+      <div class="depth-card">
+        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1400&q=85"
+             alt="موج‌های آبی اقیانوس" loading="lazy">
+        <div class="depth-overlay">
+          <span>THE BLUE PLANET</span>
+          <h3 data-fa="آبیِ بی‌انتها" data-en="ENDLESS BLUE">آبیِ بی‌انتها</h3>
+          <p data-fa="هر موج، دعوتی است برای کشف ناشناخته‌ها."
+             data-en="Every wave is an invitation to discover the unknown.">
+            هر موج، دعوتی است برای کشف ناشناخته‌ها.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="creatures section" id="creatures">
-      <div class="section-heading reveal">
-        <span class="eyebrow">MEET THE LOCALS</span>
-        <h2>Small wonders.<br><span>Big personalities.</span></h2>
-        <p>Every creature has a place in this extraordinary underwater world.</p>
+    <section class="creatures section-pad" id="creatures">
+      <div class="section-heading">
+        <span class="eyebrow" data-fa="02 / ساکنان اعماق" data-en="02 / DEEP SEA LIFE">02 / ساکنان اعماق</span>
+        <h2 data-fa="ملاقات با موجودات شگفت‌انگیز" data-en="MEET THE OCEAN'S WONDERS">
+          ملاقات با موجودات شگفت‌انگیز
+        </h2>
+        <p data-fa="هر موجود، شاهکاری از طبیعت است." data-en="Every creature is a masterpiece of nature.">
+          هر موجود، شاهکاری از طبیعت است.
+        </p>
       </div>
 
       <div class="creature-grid">
-        <article class="creature-card reveal">
-          <div class="creature-image">
-            <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=700&q=85" alt="Sea turtle swimming underwater" loading="lazy">
-            <span class="creature-number">01</span>
+        <article class="creature-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=900&q=85"
+                 alt="دریای آبی و حیات زیر آب" loading="lazy">
+            <span class="card-number">01</span>
           </div>
-          <div class="creature-info">
-            <span class="creature-type">AN ANCIENT TRAVELER</span>
-            <h3>Sea Turtle</h3>
-            <p>Gentle explorers of the great blue sea.</p>
-          </div>
-        </article>
-
-        <article class="creature-card reveal">
-          <div class="creature-image">
-            <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=700&q=85" alt="Whale swimming in the ocean" loading="lazy">
-            <span class="creature-number">02</span>
-          </div>
-          <div class="creature-info">
-            <span class="creature-type">GIANT OF THE SEA</span>
-            <h3>Blue Whale</h3>
-            <p>The largest animal ever known to exist.</p>
+          <div class="card-info">
+            <span class="card-tag" data-fa="غول مهربان" data-en="GENTLE GIANT">غول مهربان</span>
+            <h3 data-fa="نهنگ آبی" data-en="The Blue Whale">نهنگ آبی</h3>
+            <p data-fa="بزرگ‌ترین جانور شناخته‌شده روی زمین؛ شگفتی باشکوه دنیای دریا."
+               data-en="The largest known animal on Earth, a magnificent wonder of the sea.">
+              بزرگ‌ترین جانور شناخته‌شده روی زمین؛ شگفتی باشکوه دنیای دریا.
+            </p>
           </div>
         </article>
 
-        <article class="creature-card reveal">
-          <div class="creature-image">
-            <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=85" alt="Colorful tropical fish and coral" loading="lazy">
-            <span class="creature-number">03</span>
+        <article class="creature-card featured-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=900&q=85"
+                 alt="حیات دریایی در آب‌های آبی" loading="lazy">
+            <span class="card-number">02</span>
           </div>
-          <div class="creature-info">
-            <span class="creature-type">THE REEF ARTIST</span>
-            <h3>Clownfish</h3>
-            <p>A little flash of color among the coral.</p>
+          <div class="card-info">
+            <span class="card-tag" data-fa="رقص نور" data-en="DANCING LIGHT">رقص نور</span>
+            <h3 data-fa="عروس دریایی" data-en="Jellyfish">عروس دریایی</h3>
+            <p data-fa="حرکتی آرام و رؤیایی؛ گویی ستاره‌ای در دل آب شناور است."
+               data-en="A graceful, dreamlike drift, like a star floating beneath the sea.">
+              حرکتی آرام و رؤیایی؛ گویی ستاره‌ای در دل آب شناور است.
+            </p>
+          </div>
+        </article>
+
+        <article class="creature-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=900&q=85"
+                 alt="مرجان‌های رنگارنگ اقیانوس" loading="lazy">
+            <span class="card-number">03</span>
+          </div>
+          <div class="card-info">
+            <span class="card-tag" data-fa="باغ زیر آب" data-en="UNDERWATER GARDEN">باغ زیر آب</span>
+            <h3 data-fa="دنیای مرجان‌ها" data-en="Coral Gardens">دنیای مرجان‌ها</h3>
+            <p data-fa="خانه‌ای رنگارنگ برای هزاران موجود دریایی و یکی از شگفتی‌های طبیعت."
+               data-en="A colorful home for countless marine species and a natural wonder.">
+              خانه‌ای رنگارنگ برای هزاران موجود دریایی و یکی از شگفتی‌های طبیعت.
+            </p>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="quote-section" id="protect">
-      <div class="quote-bg"></div>
-      <div class="quote-content reveal">
-        <span class="eyebrow">OUR BLUE PLANET</span>
-        <div class="quote-mark">“</div>
-        <h2>The sea, once it casts its spell,<br>holds one in its <span>net of wonder.</span></h2>
-        <p>— Jacques Cousteau</p>
-        <a href="#footer" class="button button-primary">Be Part of the Change ↗</a>
-      </div>
-    </section>
-
-    <section class="protection section">
-      <div class="protection-visual reveal">
-        <img
-          src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1100&q=85"
-          alt="Beautiful natural landscape beneath a blue sky"
-          loading="lazy">
-        <div class="visual-label"><span>♡</span> EVERY ACTION MATTERS</div>
-      </div>
-      <div class="protection-copy reveal">
-        <span class="eyebrow">A BLUEER TOMORROW</span>
-        <h2>The future of our ocean starts <span>with us.</span></h2>
-        <p>
-          Our oceans need more than admiration. They need action.
-          Small choices can help protect marine habitats and the
-          incredible life that depends on them.
-        </p>
-        <ul class="action-list">
-          <li><span>✓</span> Reduce single-use plastic</li>
-          <li><span>✓</span> Choose sustainable seafood</li>
-          <li><span>✓</span> Support ocean conservation</li>
-        </ul>
-        <a href="#footer" class="text-link">Discover how to help <span>→</span></a>
-      </div>
-    </section>
-
-    <section class="closing-banner">
-      <div class="closing-content reveal">
-        <span class="eyebrow">KEEP EXPLORING</span>
-        <h2>The ocean is calling.<br><span>Will you answer?</span></h2>
-        <a href="#home" class="button button-primary">Dive Back In ↑</a>
-      </div>
+    <section class="quote-section">
+      <span class="quote-symbol">〰</span>
+      <p data-fa="«اقیانوس فقط آب نیست؛ جهانی است که هنوز رازهای زیادی برای گفتن دارد.»"
+         data-en="“The ocean is more than water; it is a world still full of secrets.”">
+        «اقیانوس فقط آب نیست؛ جهانی است که هنوز رازهای زیادی برای گفتن دارد.»
+      </p>
+      <span class="quote-caption">— THE SPIRIT OF THE OCEAN</span>
     </section>
   </main>
 
-  <footer id="footer">
-    <a href="#home" class="logo">
-      <span class="logo-icon">〰</span>
-      OCEAN<span class="logo-light">DREAMS</span>
-    </a>
-    <p>Made for the love of our blue planet.</p>
-    <div class="footer-links">
-      <a href="#explore">Explore</a>
-      <a href="#creatures">Marine Life</a>
-      <a href="#facts">Ocean Facts</a>
-      <a href="#protect">Protect</a>
-    </div>
-    <span class="copyright">© <span id="year"></span> Ocean Dreams. Keep our oceans blue.</span>
+  <footer>
+    <a href="#home" class="logo">OCEAN<span>°</span></a>
+    <p data-fa="با عشق به آبیِ بی‌انتها ساخته شد." data-en="Made with love for the endless blue.">
+      با عشق به آبیِ بی‌انتها ساخته شد.
+    </p>
+    <a href="#home" class="back-top" aria-label="بازگشت به بالا">↑</a>
   </footer>
-
-  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
 </body>
 </html>
