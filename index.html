@@ -4,231 +4,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10091f">
-  <meta name="description" content="BLOOM — Step into a magical garden of flowers, butterflies and dreams.">
-  <title>BLOOM | A Magical Garden</title>
+  <meta name="theme-color" content="#080d12">
+  <meta name="description" content="Explore a beautiful world of nature, landscapes, flowers and wildlife.">
+  <title>NATURE — A World of Beauty</title>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="ambient-glow"></div>
-  <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+  <div class="loader" id="loader">
+    <span class="loader-flower">✿</span>
+    <p>ENTER THE WILD</p>
+  </div>
 
-  <header class="navbar">
-    <a href="#home" class="logo">
-      <span class="logo-icon">✿</span> BLOOM
+  <aside class="sidebar">
+    <a class="brand" href="#home">
+      <span class="brand-icon">✿</span>
+      <span class="brand-name">NATURE</span>
+      <small>A World of Beauty</small>
     </a>
 
-    <button class="menu-toggle" id="menuToggle"
-      aria-label="Open navigation" aria-expanded="false">☰</button>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="#home" data-i18n="navHome">Home</a>
-      <a href="#about" data-i18n="navAbout">About</a>
-      <a href="#gallery" data-i18n="navGallery">Gallery</a>
-      <a href="#magic" data-i18n="navMagic">Magic</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
+    <nav>
+      <a class="nav-link active" href="#home">⌂ <span>Home</span></a>
+      <a class="nav-link" href="#gallery">▧ <span>Gallery</span></a>
+      <a class="nav-link" href="#about">♡ <span>About</span></a>
+      <a class="nav-link" href="#contact">✉ <span>Contact</span></a>
     </nav>
 
-    <button class="language-switch" id="languageSwitch"
-      type="button" aria-label="Change language">
-      <span>FA</span><span class="active" id="langLabel">EN</span>
-    </button>
-  </header>
+    <div class="sidebar-bottom">
+      <span>✿</span>
+      <p>Nature is not a place to visit. It is home.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/" aria-label="Instagram">ig</a>
+        <a href="https://www.pinterest.com/" aria-label="Pinterest">p</a>
+        <a href="#contact" aria-label="Contact">↗</a>
+      </div>
+    </div>
+  </aside>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-shade"></div>
-      <div class="butterfly butterfly-one">🦋</div>
-      <div class="butterfly butterfly-two">🦋</div>
-      <div class="butterfly butterfly-three">✧</div>
-
-      <div class="hero-content">
-        <p class="eyebrow" data-i18n="eyebrow">
-          ✧ A MAGICAL GARDEN FOR YOUR SOUL
+      <div class="hero-content reveal">
+        <p class="eyebrow">✦ EXPLORE THE EXTRAORDINARY ✦</p>
+        <h1>Beauty<br>of <span>Nature</span></h1>
+        <p class="hero-description">
+          Discover breathtaking landscapes, peaceful moments
+          and the magic of our planet.
         </p>
-        <h1>BLO<span>O</span>M</h1>
-        <h2 data-i18n="heroTitle">
-          Where Flowers, Dreams<br>and Magic Come to Life
-        </h2>
-        <p class="hero-description" data-i18n="heroText">
-          Step into a world of glowing flowers, fluttering butterflies
-          and endless beauty. Discover a garden where nature and
-          imagination bloom together.
+        <a class="primary-button" href="#gallery">
+          Explore Gallery <span>↗</span>
+        </a>
+      </div>
+
+      <div class="hero-caption">
+        <span class="caption-line"></span>
+        <span>01 / THE WILD COLLECTION</span>
+      </div>
+      <div class="hero-count">01 <span>—</span> 04</div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">A LITTLE ESCAPE</p>
+          <h2>Featured <span>Photos</span></h2>
+        </div>
+        <p class="section-note">Find your moment of wonder. ↘</p>
+      </div>
+
+      <div class="filters" aria-label="Filter photos">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="landscape">Landscapes</button>
+        <button class="filter" data-filter="flowers">Flowers</button>
+        <button class="filter" data-filter="wildlife">Wildlife</button>
+        <button class="filter" data-filter="ocean">Ocean</button>
+      </div>
+
+      <div class="photo-grid">
+        <article class="photo-card tall reveal" data-category="landscape">
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85" alt="Peaceful mountain lake surrounded by forest" loading="eager">
+          <div class="photo-overlay">
+            <span class="photo-category">LANDSCAPE</span>
+            <h3>Into the Wild</h3>
+            <button class="like-button" aria-label="Add Into the Wild to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="flowers">
+          <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=85" alt="Beautiful flowers in a spring garden" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">FLOWERS</span>
+            <h3>Petal Dreams</h3>
+            <button class="like-button" aria-label="Add Petal Dreams to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="ocean">
+          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=85" alt="Blue ocean waves and sea foam" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">OCEAN</span>
+            <h3>Blue Horizon</h3>
+            <button class="like-button" aria-label="Add Blue Horizon to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="wildlife">
+          <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=800&q=85" alt="Fox in its natural habitat" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">WILDLIFE</span>
+            <h3>Forest Spirit</h3>
+            <button class="like-button" aria-label="Add Forest Spirit to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="landscape">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=85" alt="Sunlight over a beautiful natural landscape" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">LANDSCAPE</span>
+            <h3>Golden Hour</h3>
+            <button class="like-button" aria-label="Add Golden Hour to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="landscape">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85" alt="Majestic mountains rising into the sky" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">LANDSCAPE</span>
+            <h3>Above the Clouds</h3>
+            <button class="like-button" aria-label="Add Above the Clouds to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="flowers">
+          <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=800&q=85" alt="Lush green tropical plant leaves" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">BOTANICAL</span>
+            <h3>Green Poetry</h3>
+            <button class="like-button" aria-label="Add Green Poetry to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+
+        <article class="photo-card reveal" data-category="ocean">
+          <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=85" alt="Sunlight reflecting on the ocean" loading="lazy">
+          <div class="photo-overlay">
+            <span class="photo-category">OCEAN</span>
+            <h3>Ocean Whispers</h3>
+            <button class="like-button" aria-label="Add Ocean Whispers to favorites" aria-pressed="false">♡</button>
+          </div>
+        </article>
+      </div>
+      <p class="empty-message" hidden>No photos in this category yet.</p>
+    </section>
+
+    <section class="about-section reveal" id="about">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85" alt="Sunbeams shining through a green forest" loading="lazy">
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">OUR LITTLE PHILOSOPHY</p>
+        <h2>Slow down.<br>Look <span>closer.</span></h2>
+        <p>
+          From quiet forests to endless oceans, nature reminds us
+          that the most beautiful things are often the simplest.
+          Take a breath and discover the extraordinary in the ordinary.
         </p>
-
-        <div class="hero-buttons">
-          <a href="#gallery" class="btn btn-primary" data-i18n="explore">
-            Explore the Garden <span>↗</span>
-          </a>
-          <a href="#about" class="btn btn-outline" data-i18n="discover">
-            Discover the Magic
-          </a>
-        </div>
-
-        <div class="hero-note">
-          <span class="pulse-dot"></span>
-          <span data-i18n="heroNote">A little wonder lives here</span>
-        </div>
-      </div>
-
-      <div class="hero-bottom">
-        <span data-i18n="scroll">SCROLL TO DISCOVER</span>
-        <span class="scroll-line"></span>
+        <a href="#gallery" class="text-link">DISCOVER MORE ↗</a>
       </div>
     </section>
 
-    <section class="intro section" id="about">
-      <div class="intro-image image-frame">
-        <img
-          src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85"
-          alt="Beautiful pink flowers in a dreamy garden"
-          loading="lazy">
-        <div class="image-sticker">✿</div>
-        <div class="image-caption" data-i18n="imageCaption">
-          Let your imagination bloom
-        </div>
-      </div>
-
-      <div class="intro-copy">
-        <p class="eyebrow" data-i18n="aboutEyebrow">✿ ABOUT BLOOM</p>
-        <h2 data-i18n="aboutTitle">
-          More Than a Garden,<br>It's an <span>Experience.</span>
-        </h2>
-        <p data-i18n="aboutText">
-          BLOOM is a magical world filled with vibrant flowers,
-          fluttering butterflies and hidden wonders. Explore a
-          dreamy place where every little detail feels alive.
-        </p>
-
-        <div class="stats">
-          <div><strong>∞</strong><span data-i18n="statOne">Endless Wonder</span></div>
-          <div><strong>✧</strong><span data-i18n="statTwo">Pure Imagination</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="gallery-section section" id="gallery">
-      <div class="section-heading">
-        <p class="eyebrow" data-i18n="galleryEyebrow">✧ THE SECRET GARDEN</p>
-        <h2 data-i18n="galleryTitle">A World in <span>Bloom</span></h2>
-        <p data-i18n="galleryText">
-          Every flower has a story. Which one will you discover?
-        </p>
-      </div>
-
-      <div class="gallery-grid">
-        <button class="gallery-card tall" type="button"
-          data-title-en="Petal Dreams" data-title-fa="رؤیای گلبرگ‌ها">
-          <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85"
-            alt="Pink garden flowers" loading="lazy">
-          <span class="card-overlay">
-            <small>01 / FLOWERS</small>
-            <strong data-i18n="cardOne">Petal Dreams</strong>
-            <span class="card-plus">↗</span>
-          </span>
-        </button>
-
-        <button class="gallery-card" type="button"
-          data-title-en="Golden Hour" data-title-fa="ساعت طلایی">
-          <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85"
-            alt="Golden light over a dreamy landscape" loading="lazy">
-          <span class="card-overlay">
-            <small>02 / LIGHT</small>
-            <strong data-i18n="cardTwo">Golden Hour</strong>
-            <span class="card-plus">↗</span>
-          </span>
-        </button>
-
-        <button class="gallery-card" type="button"
-          data-title-en="Wild & Free" data-title-fa="آزاد و رها">
-          <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?auto=format&fit=crop&w=900&q=85"
-            alt="Colorful wildflowers" loading="lazy">
-          <span class="card-overlay">
-            <small>03 / NATURE</small>
-            <strong data-i18n="cardThree">Wild &amp; Free</strong>
-            <span class="card-plus">↗</span>
-          </span>
-        </button>
-
-        <button class="gallery-card wide" type="button"
-          data-title-en="Into the Dream" data-title-fa="در دل رؤیا">
-          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85"
-            alt="Sunlight shining through a magical forest" loading="lazy">
-          <span class="card-overlay">
-            <small>04 / WONDER</small>
-            <strong data-i18n="cardFour">Into the Dream</strong>
-            <span class="card-plus">↗</span>
-          </span>
-        </button>
-      </div>
-    </section>
-
-    <section class="magic-section section" id="magic">
-      <div class="section-heading">
-        <p class="eyebrow" data-i18n="magicEyebrow">✧ A TOUCH OF WONDER</p>
-        <h2 data-i18n="magicTitle">Little Things, <span>Big Magic</span></h2>
-        <p data-i18n="magicText">
-          The garden is full of surprises. Try a little magic of your own.
-        </p>
-      </div>
-
-      <div class="magic-grid">
-        <button class="magic-card" id="bloomButton" type="button">
-          <span class="magic-icon flower-icon">✿</span>
-          <h3 data-i18n="magicOne">Make It Bloom</h3>
-          <p data-i18n="magicOneText">Tap to release a shower of magical petals.</p>
-          <span class="magic-action" data-i18n="tryMagic">TRY IT ↗</span>
-        </button>
-
-        <div class="magic-card">
-          <span class="magic-icon">🦋</span>
-          <h3 data-i18n="magicTwo">Butterfly Dreams</h3>
-          <p data-i18n="magicTwoText">Follow the butterflies as they dance through the garden.</p>
-          <span class="magic-action">✧ ✧ ✧</span>
-        </div>
-
-        <div class="magic-card">
-          <span class="magic-icon">☾</span>
-          <h3 data-i18n="magicThree">Starlit Moments</h3>
-          <p data-i18n="magicThreeText">Tiny lights make every moment feel extraordinary.</p>
-          <span class="magic-action">✦ ✦ ✦</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="quote-section">
-      <span class="quote-mark">“</span>
-      <p data-i18n="quote">
-        Wherever flowers bloom, so does a little bit of magic.
-      </p>
-      <span class="quote-flower">✿ ✧ ✿</span>
-    </section>
-
-    <section class="contact-section section" id="contact">
-      <p class="eyebrow" data-i18n="contactEyebrow">✧ YOUR STORY STARTS HERE</p>
-      <h2 data-i18n="contactTitle">Keep a Little <span>Magic</span> With You.</h2>
-      <p data-i18n="contactText">
-        Thanks for wandering through our garden. Come back whenever you need a little wonder.
-      </p>
-      <a class="btn btn-primary" href="#home" data-i18n="backTop">
-        Back to the Garden ↑
-      </a>
-    </section>
+    <footer id="contact">
+      <a class="footer-brand" href="#home">NATURE<span>✿</span></a>
+      <p>Made with love for the natural world.</p>
+      <a href="#home" class="back-top">BACK TO TOP ↑</a>
+      <small>© <span id="year"></span> NATURE STUDIO</small>
+    </footer>
   </main>
-
-  <footer>
-    <a href="#home" class="logo"><span class="logo-icon">✿</span> BLOOM</a>
-    <p data-i18n="footer">Made with love, flowers & a little magic.</p>
-    <span>© <span id="year"></span> BLOOM</span>
-  </footer>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" id="lightboxClose"
-      type="button" aria-label="Close image">×</button>
-    <img id="lightboxImage" src="" alt="">
-    <p id="lightboxTitle"></p>
-  </div>
 </body>
 </html>
