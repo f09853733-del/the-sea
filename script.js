@@ -1,72 +1,86 @@
 
-const languageButton = document.getElementById("languageButton");
-const bubblesContainer = document.getElementById("bubbles");
+const languageButton = document.getElementById("language");
 
-let currentLanguage = "fa";
+let currentLanguage = "en";
 
-// Persian / English switch
-function changeLanguage(language) {
+function setLanguage(language) {
   currentLanguage = language;
 
   document.documentElement.lang = language;
-  document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
-  document.body.dir = language === "fa" ? "rtl" : "ltr";
+  document.documentElement.dir =
+    language === "fa" ? "rtl" : "ltr";
 
-  document.querySelectorAll("[data-fa][data-en]").forEach((element) => {
-    element.textContent = element.dataset[language];
+  document.body.dir =
+    language === "fa" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-en][data-fa]").forEach((element) => {
+    element.innerHTML =
+      language === "fa"
+        ? element.dataset.fa
+        : element.dataset.en;
   });
 
-  languageButton.textContent = language === "fa" ? "EN ↗" : "FA ↗";
+  languageButton.textContent =
+    language === "en" ? "فارسی" : "English";
 
-  document.title = language === "fa"
-    ? "Ocean Dream | رؤیای اقیانوس"
-    : "Ocean Dream | Ocean Secrets";
+  document.title =
+    language === "fa"
+      ? "دریا — کشف آبی پنهان"
+      : "The Sea — Discover the Blue";
 }
 
 languageButton.addEventListener("click", () => {
-  changeLanguage(currentLanguage === "fa" ? "en" : "fa");
+  setLanguage(currentLanguage === "en" ? "fa" : "en");
 });
 
-// Try the backup image if the first image fails
-document.querySelectorAll("img[data-fallback]").forEach((img) => {
-  img.addEventListener("error", function () {
-    if (this.dataset.fallbackTried !== "true") {
-      this.dataset.fallbackTried = "true";
-      this.src = this.dataset.fallback;
-    } else {
-      // Keep the layout attractive even if both URLs fail
-      this.style.visibility = "hidden";
-      this.parentElement.style.background =
-        "radial-gradient(ellipse at center, #12617a, #061c2b)";
-      console.warn("Both image URLs failed:", this.alt);
-    }
-  });
+// Reveal sections as they enter the viewport
+const revealElements = document.querySelectorAll(".reveal");
 
-  // If the original image loaded, no fallback is needed.
-});
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-// Animated bubbles
-function createBubbles() {
-  if (!bubblesContainer) return;
-
-  const fragment = document.createDocumentFragment();
-
-  for (let i = 0; i < 25; i++) {
-    const bubble = document.createElement("span");
-    const size = Math.random() * 12 + 4;
-
-    bubble.className = "bubble";
-    bubble.style.left = `${Math.random() * 100}%`;
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.animationDuration = `${9 + Math.random() * 12}s`;
-    bubble.style.animationDelay = `${-Math.random() * 20}s`;
-
-    fragment.appendChild(bubble);
-  }
-
-  bubblesContainer.appendChild(fragment);
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("visible"));
 }
 
-changeLanguage("fa");
-createBubbles();
+// Floating ocean bubbles
+const bubbleContainer = document.querySelector(".bubbles");
+
+function createBubble() {
+  if (document.hidden || !bubbleContainer) return;
+
+  const bubble = document.createElement("span");
+  bubble.className = "bubble";
+
+  const size = Math.random() * 12 + 4;
+
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.left = `${Math.random() * 100}%`;
+  bubble.style.animationDuration = `${Math.random() * 7 + 8}s`;
+
+  bubbleContainer.appendChild(bubble);
+
+  bubble.addEventListener("animationend", () => {
+    bubble.remove();
+  });
+
+  setTimeout(() => bubble.remove(), 16000);
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  setInterval(createBubble, 650);
+}
+
+setLanguage("en");
