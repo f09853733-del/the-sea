@@ -1,34 +1,89 @@
 
-const languageBtn = document.getElementById("languageBtn");
-let currentLanguage = "fa";
+const langBtn = document.getElementById("langBtn");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.querySelector(".nav-links");
 
-languageBtn.addEventListener("click", () => {
-  currentLanguage = currentLanguage === "fa" ? "en" : "fa";
+let currentLang = "en";
 
-  document.documentElement.lang = currentLanguage;
-  document.documentElement.dir =
-    currentLanguage === "fa" ? "rtl" : "ltr";
+// Change the website language
+function changeLanguage(lang) {
+  currentLang = lang;
 
-  document.querySelectorAll("[data-fa][data-en]").forEach(element => {
-    element.textContent = element.dataset[currentLanguage];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+  document.body.dir = lang === "fa" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-en][data-fa]").forEach((element) => {
+    element.textContent = element.dataset[lang];
   });
 
-  languageBtn.textContent =
-    currentLanguage === "fa" ? "English" : "فارسی";
+  langBtn.textContent = lang === "en" ? "FA" : "EN";
+  langBtn.setAttribute(
+    "aria-label",
+    lang === "en" ? "Change language to Persian" : "Change language to English"
+  );
+
+  document.title =
+    lang === "fa"
+      ? "دنیای دریا | کشف اقیانوس"
+      : "The Sea | Discover the Ocean";
+
+  localStorage.setItem("theSeaLanguage", lang);
+}
+
+// Language button
+langBtn.addEventListener("click", () => {
+  changeLanguage(currentLang === "en" ? "fa" : "en");
 });
 
-// اگر عکسی بارگذاری نشد، تصویر جایگزین را امتحان کن.
-const fallbackImages = [
-  "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80"
-];
+// Mobile menu
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
 
-document.querySelectorAll(".ocean-card img").forEach(img => {
-  let attempts = 0;
+  menuBtn.textContent = isOpen ? "✕" : "☰";
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+});
 
-  img.addEventListener("error", () => {
-    if (attempts < fallbackImages.length) {
-      img.src = fallbackImages[attempts++];
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.textContent = "☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+// Reveal elements while scrolling
+const revealElements = document.querySelectorAll(
+  ".feature-card, .gallery-card, .section-heading, .gallery-heading, .quote-section"
+);
+
+revealElements.forEach((element) => {
+  element.classList.add("reveal");
+});
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
     }
-  });
-});
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("visible"));
+}
+
+// Restore the last selected language
+const savedLanguage = localStorage.getItem("theSeaLanguage");
+
+if (savedLanguage === "fa" || savedLanguage === "en") {
+  changeLanguage(savedLanguage);
+}
